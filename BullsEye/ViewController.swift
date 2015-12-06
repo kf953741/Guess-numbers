@@ -19,14 +19,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var roundLabel:UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        startNewRound()
-        updateTargetValue()
+        startNewGame()
+        updateLabels()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func startNewGame()
+    {
+        score = 0;
+        round = 0;
+        startNewRound()
     }
     
     func startNewRound()
@@ -36,7 +42,7 @@ class ViewController: UIViewController {
         slider.value = Float(currentValue)
         
     }
-    func updateTargetValue()
+    func updateLabels()
     {
         targetLabel.text = String(targetValue)
         scoreLabel.text = String(score)
@@ -66,7 +72,7 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let action = UIAlertAction(title: "OK", style: .Default, handler:
             { action in self.startNewRound()
-                self.updateTargetValue()})
+                self.updateLabels()})
         alert.addAction(action)
         presentViewController(alert, animated: true, completion: nil)
 
@@ -76,5 +82,33 @@ class ViewController: UIViewController {
     {
         currentValue = lroundf(slider.value) ;
     }
+    @IBAction func startOver()
+    {
+        startNewGame()
+        updateLabels()
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

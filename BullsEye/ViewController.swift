@@ -64,11 +64,12 @@ class ViewController: UIViewController {
         }
         let message = "The value of the slider is :\(points)"
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let action = UIAlertAction(title: "OK", style: .Default, handler:
+            { action in self.startNewRound()
+                self.updateTargetValue()})
         alert.addAction(action)
         presentViewController(alert, animated: true, completion: nil)
-        startNewRound()
-        updateTargetValue()
+
     }
     
     @IBAction func sliderMove(slider:UISlider)
